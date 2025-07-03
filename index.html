@@ -1,1 +1,130 @@
-﻿11
+﻿<script>
+	window.onload = function() {
+		time();
+		typing();
+	}
+	
+	function typing() {
+		const $text = document.querySelector(".typing .text");
+		
+		// 글자 모음
+		const letters = [
+			"쩡햄Live",
+			"자율적후원 ",
+			"구독좋아요",
+			"감사합니다"
+		];
+		
+		// 글자 입력 속도
+		const speed = 100;
+		let i = 0;
+		
+		// 타이핑 효과
+		const typing = async () => {  
+			const letter = letters[i].split("");
+		  
+			while (letter.length) {
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('L',`<span style="color: red;">${"L"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('후',`<span style="color: red;">${"후"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('원',`<span style="color: red;">${"원"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('감',`<span style="color: red;">${"감"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('사',`<span style="color: red;">${"사"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('구',`<span style="color: red;">${"구"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('독',`<span style="color: red;">${"독"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('0',`<span style="color: red;">${"0"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('1',`<span style="color: red;">${"1"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('2',`<span style="color: red;">${"2"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('3',`<span style="color: red;">${"3"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('4',`<span style="color: red;">${"4"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('5',`<span style="color: red;">${"5"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('6',`<span style="color: red;">${"6"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('7',`<span style="color: red;">${"7"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('8',`<span style="color: red;">${"8"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('9',`<span style="color: red;">${"9"}</span>`);
+
+				await wait(speed);
+		    		$text.innerHTML += letter.shift(); 
+			}
+		  
+			// 잠시 대기
+			await wait(14000);
+		  
+			// 지우는 효과
+			remove();
+		}
+		
+		// 글자 지우는 효과
+		const remove = async () => {
+			const letter = letters[i].split("");
+		  
+			while (letter.length) {
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('L',`<span style="color: red;">${"L"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('후',`<span style="color: red;">${"후"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('원',`<span style="color: red;">${"원"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('감',`<span style="color: red;">${"감"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('사',`<span style="color: red;">${"사"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('구',`<span style="color: red;">${"구"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('독',`<span style="color: red;">${"독"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('0',`<span style="color: red;">${"0"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('1',`<span style="color: red;">${"1"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('2',`<span style="color: red;">${"2"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('3',`<span style="color: red;">${"3"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('4',`<span style="color: red;">${"4"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('5',`<span style="color: red;">${"5"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('6',`<span style="color: red;">${"6"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('7',`<span style="color: red;">${"7"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('8',`<span style="color: red;">${"8"}</span>`);
+				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('9',`<span style="color: red;">${"9"}</span>`);
+
+				await wait(speed);
+		    
+		    		letter.pop();
+		    		$text.innerHTML = letter.join(""); 
+			}
+		  
+		  	// 다음 순서의 글자로 지정, 타이핑 함수 다시 실행
+		  	i = !letters[i+1] ? 0 : i + 1;
+		  	typing();
+		}
+		
+		// 딜레이 기능 ( 마이크로초 )
+		function wait(ms) {
+			return new Promise(res => setTimeout(res, ms))
+		}
+		
+		// 초기 실행
+		setTimeout(typing, 1000);
+	}
+
+	// 시계
+	function time() {
+		var today = new Date();   
+
+		var hours = ('0' + today.getHours()).slice(-2); 
+		var minutes = ('0' + today.getMinutes()).slice(-2);
+		//var seconds = ('0' + today.getSeconds()).slice(-2); 
+		//var timeString = hours + ':' + minutes  + ':' + seconds;
+		var timeString = hours + ':' + minutes;	
+			
+		document.getElementById('time').innerHTML = timeString;	
+	}
+	//setInterval("time()", 1000);
+	setInterval("time()", 60000);
+</script>
+<body>
+	<table width="1280" border="0">
+		<tr height="600">
+			<td width="275" colspan="2" style="vertical-align:top;text-align:right;">
+				<span class="typing" style="color:white;font-size:35px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"><span id="textcolor" class="text"></span></span>
+			</td>
+		</tr>
+		<tr>
+			<td width="245" style="vertical-align:top;">
+			</td>
+			<td style="vertical-align:top;text-align:right;">
+				<span style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"><font color="#FFD700">카카오</font> 33330-7696-7896 <font color="#6495ED">오J한</font>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</span>
+				<span id="time" style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"></span>
+			</td>
+		</tr>
+	</table>
+</body>
