@@ -9,10 +9,11 @@
 		
 		// 글자 모음
 		const letters = [
-			"쩡햄Live",
+			"쩡햄Live ",
 			"자율적후원 ",
-			"구독좋아요",
-			"감사합니다"
+			//"1 ",
+			"구독좋아요 ",
+			"감사합니다 "
 		];
 		
 		// 글자 입력 속도
@@ -41,7 +42,7 @@
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('8',`<span style="color: red;">${"8"}</span>`);
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('9',`<span style="color: red;">${"9"}</span>`);
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('10',`<span style="color: red;">${"10"}</span>`);
-
+				
 				await wait(speed);
 		    		$text.innerHTML += letter.shift(); 
 			}
@@ -75,7 +76,7 @@
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('8',`<span style="color: red;">${"8"}</span>`);
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('9',`<span style="color: red;">${"9"}</span>`);
 				document.getElementById("textcolor").innerHTML = document.getElementById("textcolor").innerHTML.replace('10',`<span style="color: red;">${"10"}</span>`);
-
+				
 				await wait(speed);
 		    
 		    		letter.pop();
@@ -112,18 +113,14 @@
 	setInterval("time()", 60000);
 </script>
 <body>
-	<table width="1280" border="0">
-		<tr height="600">
-			<td width="275" colspan="2" style="vertical-align:top;text-align:right;">
-				<span class="typing" style="color:white;font-size:35px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"><span id="textcolor" class="text"></span></span>
-			</td>
-		</tr>
+	<table border="0">
 		<tr>
-			<td width="245" style="vertical-align:top;">
+			<td width="1060" style="vertical-align:top;text-align:right;white-space:nowrap;overflow:hidden;max-width:1060px;">
+				<span class="typing" style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"><span id="textcolor" class="text"></span></span>
+				<span style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"><font color="#FFD700">&ensp;&ensp;카카오</font> 33330-7696-7896 <font color="#6495ED">오J한</font>&ensp;</span>
 			</td>
 			<td style="vertical-align:top;text-align:right;">
-				<span style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"><font color="#FFD700">카카오</font> 33330-7696-7896 <font color="#6495ED">오J한</font>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</span>
-				<span id="time" style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"></span>
+				&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span id="time" style="color:white;font-size:45px;font-weight:bold;font-family:hy울릉도b;text-shadow:-2px 0 black,0 2px black,2px 0 black,0 -2px black;"></span>
 			</td>
 		</tr>
 	</table>
