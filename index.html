@@ -19,88 +19,11 @@
     }
   </style>
 </head>
-<body>
-  <table border="0">
-    <tr>
-      <td width="975" style="vertical-align: top; text-align: right; white-space: nowrap; overflow: hidden; max-width: 975px; padding-left: 0px; padding-right: 85px;">
-        <span class="typing" style="color: white; font-size: 45px; font-weight: bold; font-family: hy울릉도b; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;">
-          <span id="textcolor" class="text"></span>
-        </span>
-        <span style="color: white; font-size: 45px; font-weight: bold; font-family: hy울릉도b; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;">
-          <font color="#FFD700">&ensp;&ensp;&ensp;카카오</font> 33330-7696-7896 <font color="#6495ED">오J한</font>
-        </span>
-      </td>
-      <td style="vertical-align: top; text-align: right; padding-top: 12px; padding-left: 50px;">
-        <span id="time" style="color: white; font-size: 45px; font-weight: bold; font-family: hy울릉도b; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"></span>
-      </td>
-    </tr>
-  </table>
-
   <script>
     window.onload = function () {
       time();
       typing();
     };
-
-    function createBrick(x, y, color = "white") {
-      const brick = document.createElement("div");
-      brick.className = "brick";
-      brick.style.left = x + "px";
-      brick.style.top = y + "px";
-      brick.style.background = color;
-      brick.style.border = "1px solid black";
-      brick.style.opacity = 1;  // 초기 불투명도 1
-      document.body.appendChild(brick);
-
-      // 물리 관련 변수
-      let dx = (Math.random() - 0.5) * 6;
-      let dy = (Math.random() - 1.5) * 6;
-      let gravity = 0.5;
-      let friction = 0.6;
-      let posX = x;
-      let posY = y;
-      const ground = window.innerHeight - 12;
-
-      function fall() {
-        dy += gravity;
-        posX += dx;
-        posY += dy;
-
-        if (posY >= ground) {
-          posY = ground;
-          dy = 0;
-          dx *= friction;
-          if (Math.abs(dx) < 0.1) dx = 0;
-
-          // 바닥에 닿으면 애니 종료 후 페이드 아웃 시작
-          if (!brick.fading) {
-            brick.fading = true;
-            setTimeout(() => {
-              let opacity = 1;
-              const fadeOut = () => {
-                opacity -= 0.05;
-                if (opacity <= 0) {
-                  brick.remove();
-                } else {
-                  brick.style.opacity = opacity;
-                  requestAnimationFrame(fadeOut);
-                }
-              };
-              fadeOut();
-            }, 1500);  // 1.5초 대기 후 사라짐 시작
-          }
-        }
-
-        brick.style.left = posX + "px";
-        brick.style.top = posY + "px";
-
-        if (posY < ground || Math.abs(dx) > 0.1) {
-          requestAnimationFrame(fall);
-        }
-      }
-
-      fall();
-    }
 
     function typing() {
       const $text = document.querySelector(".typing .text");
@@ -173,6 +96,66 @@
       setTimeout(typingFunc, 1000);
     }
 
+    function createBrick(x, y, color = "white") {
+      const brick = document.createElement("div");
+      brick.className = "brick";
+      brick.style.left = x + "px";
+      brick.style.top = y + "px";
+      brick.style.background = color;
+      brick.style.border = "1px solid black";
+      brick.style.opacity = 1;  // 초기 불투명도 1
+      document.body.appendChild(brick);
+
+      // 물리 관련 변수
+      let dx = (Math.random() - 0.5) * 6;
+      let dy = (Math.random() - 1.5) * 6;
+      let gravity = 0.5;
+      let friction = 0.6;
+      let posX = x;
+      let posY = y;
+      const ground = window.innerHeight - 12;
+
+      function fall() {
+        dy += gravity;
+        posX += dx;
+        posY += dy;
+
+        if (posY >= ground) {
+          posY = ground;
+          dy = 0;
+          dx *= friction;
+          if (Math.abs(dx) < 0.1) dx = 0;
+
+          // 바닥에 닿으면 애니 종료 후 페이드 아웃 시작
+          if (!brick.fading) {
+            brick.fading = true;
+            setTimeout(() => {
+              let opacity = 1;
+              const fadeOut = () => {
+                opacity -= 0.05;
+                if (opacity <= 0) {
+                  brick.remove();
+                } else {
+                  brick.style.opacity = opacity;
+                  requestAnimationFrame(fadeOut);
+                }
+              };
+              fadeOut();
+            }, 1500);  // 1.5초 대기 후 사라짐 시작
+          }
+        }
+
+        brick.style.left = posX + "px";
+        brick.style.top = posY + "px";
+
+        if (posY < ground || Math.abs(dx) > 0.1) {
+          requestAnimationFrame(fall);
+        }
+      }
+
+      fall();
+    }
+
     function time() {
       const today = new Date();
       const hours = ("0" + today.getHours()).slice(-2);
@@ -182,5 +165,21 @@
 
     setInterval(time, 60000);
   </script>
+<body>
+  <table border="0">
+    <tr>
+      <td width="975" style="vertical-align: top; text-align: right; white-space: nowrap; overflow: hidden; max-width: 975px; padding-left: 0px; padding-right: 85px;">
+        <span class="typing" style="color: white; font-size: 45px; font-weight: bold; font-family: hy울릉도b; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;">
+          <span id="textcolor" class="text"></span>
+        </span>
+        <span style="color: white; font-size: 45px; font-weight: bold; font-family: hy울릉도b; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;">
+          <font color="#FFD700">&ensp;&ensp;&ensp;카카오</font> 33330-7696-7896 <font color="#6495ED">오J한</font>
+        </span>
+      </td>
+      <td style="vertical-align: top; text-align: right; padding-top: 12px; padding-left: 50px;">
+        <span id="time" style="color: white; font-size: 45px; font-weight: bold; font-family: hy울릉도b; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"></span>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
