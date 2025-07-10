@@ -105,12 +105,12 @@
     function typing() {
       const $text = document.querySelector(".typing .text");
       const letters = [
-      "쩡햄Live ",
-			"자율적후원 ",
-			"자율적후원 1테스트 2테스트    3테스트    4테스트    5테스트 ",
-			//"6 7    8    9    10    11 ",
-			"구독좋아요 ",
-			"감사합니다 "
+        "쩡햄Live ",
+        "자율적후원 ",
+        "자율적후원 1테스트 2테스트    3테스트    4테스트    5테스트 ",
+        //"6 7    8    9    10    11 ",
+        "구독좋아요 ",
+        "감사합니다 "
       ];
       const speed = 100;
       let i = 0;
@@ -135,7 +135,7 @@
 
           const rect = span.getBoundingClientRect();
           const x = rect.left + rect.width / 2 + window.scrollX;
-          const y = rect.top + rect.height / 2 + window.scrollY - 10;
+          const y = rect.top + rect.height / 2 + window.scrollY + 10;  // 위치를 10px 아래로 조정
 
           for (let k = 0; k < 10; k++) {
             createBrick(x, y, span.style.color);
@@ -154,7 +154,7 @@
           if (span && span.getBoundingClientRect) {
             const rect = span.getBoundingClientRect();
             const x = rect.left + rect.width / 2 + window.scrollX;
-            const y = rect.top + rect.height / 2 + window.scrollY - 10;
+            const y = rect.top + rect.height / 2 + window.scrollY + 10;  // 위치를 10px 아래로 조정
 
             for (let k = 0; k < 10; k++) {
               createBrick(x, y, span.style.color);
