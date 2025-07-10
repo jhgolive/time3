@@ -8,8 +8,8 @@
       const $text = document.querySelector(".typing .text");
       const letters = [
 	"쩡햄Live ",
-	"자율적후원 ",
-	//"자율적후원 1 2    3    4    5 ",
+	//"자율적후원 ",
+	"자율적후원 1테스트 2테스트    3테스트    4테스트    5테스트 ",
 	//"1 2    3    4    5    6 ",
 	//"6 7    8    9    10    11 ",
 	"구독좋아요 ",
@@ -38,7 +38,7 @@
 
           const rect = span.getBoundingClientRect();
           const x = rect.left + rect.width / 2 + window.scrollX;
-          const y = rect.top + rect.height / 2 + window.scrollY + 10;  // 위치를 10px 아래로 조정
+          const y = rect.top + rect.height / 2 + window.scrollY + 10;
 
           for (let k = 0; k < 10; k++) {
             createBrick(x, y, span.style.color);
@@ -57,7 +57,7 @@
           if (span && span.getBoundingClientRect) {
             const rect = span.getBoundingClientRect();
             const x = rect.left + rect.width / 2 + window.scrollX;
-            const y = rect.top + rect.height / 2 + window.scrollY + 10;  // 위치를 10px 아래로 조정
+            const y = rect.top + rect.height / 2 + window.scrollY + 10;
 
             for (let k = 0; k < 10; k++) {
               createBrick(x, y, span.style.color);
@@ -83,17 +83,16 @@
       brick.style.top = y + "px";
       brick.style.background = color;
       brick.style.border = "1px solid black";
-      brick.style.opacity = 1;  // 초기 불투명도 1
+      brick.style.opacity = 1;
       document.body.appendChild(brick);
 
-      // 물리 관련 변수
       let dx = (Math.random() - 0.5) * 6;
       let dy = (Math.random() - 1.5) * 6;
       let gravity = 0.5;
       let friction = 0.6;
       let posX = x;
       let posY = y;
-      const ground = window.innerHeight - 12;
+      const ground = y + 0; // 글자 바로 아래 쌓이도록 수정
 
       function fall() {
         dy += gravity;
@@ -106,13 +105,12 @@
           dx *= friction;
           if (Math.abs(dx) < 0.1) dx = 0;
 
-          // 바닥에 닿으면 애니 종료 후 페이드 아웃 시작
           if (!brick.fading) {
             brick.fading = true;
             setTimeout(() => {
               let opacity = 1;
               const fadeOut = () => {
-                opacity -= 0.05;
+                opacity -= 1;  // 더 빠르게 감소
                 if (opacity <= 0) {
                   brick.remove();
                 } else {
@@ -121,7 +119,7 @@
                 }
               };
               fadeOut();
-            }, 1500);  // 1.5초 대기 후 사라짐 시작
+            }, 200);	 // 지연시간도 절반 이하로 줄임
           }
         }
 
@@ -162,6 +160,7 @@
     }
   </style>
 <body>
+	<br>
   <table border="0">
     <tr>
       <td width="975" style="vertical-align: top; text-align: right; white-space: nowrap; overflow: hidden; max-width: 975px; padding-left: 0px; padding-right: 85px;">
